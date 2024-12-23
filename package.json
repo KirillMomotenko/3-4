@@ -1,7 +1,7 @@
 {
   "name": "todo-app",
   "private": true,
-  "homepage": "https://KirillMomotenko.github.io/3-4",
+  "homepage": "https://KirillMomotenko.github.io/Lab3-4",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
