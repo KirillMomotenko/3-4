@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Lab3-4/" element={<TodoPage />} />
-        <Route path="/Lab3-4/dnd/" element={<DndPage />} />
+        <Route path="/dnd/" element={<DndPage />} />
       </Routes>
     </Router>
   );
