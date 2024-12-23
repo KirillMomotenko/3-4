@@ -1,0 +1,210 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.todo-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+input[type='text'] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+button.delete {
+  background-color: #dc3545;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+button.filter {
+  margin-right: 5px;
+  background-color: #007bff;
+}
+
+button.filter:hover {
+  background-color: #0056b3;
+}
+.todo-item {
+  display: flex;
+  align-items: center; /* Выравнивание элементов по вертикали */
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.todo-item span {
+  margin-left: 10px; /* Отступ между чекбоксом и текстом */
+  flex: 1; /* Заполнить оставшееся пространство */
+}
+
+button.delete {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Отступ справа от кнопки удаления */
+}
+
+button.delete:hover {
+  background-color: #ff1a1a;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px; /* Отступ между чекбоксом и текстом задачи */
+}
+
+/*DnD стилизация*/
+
+.dnd-container {
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение ссылки и колонок */
+  align-items: center;
+  height: 100%;
+}
+
+.link-container {
+  margin-bottom: 20px; /* Отступ от ссылки до столбцов */
+  text-align: center; /* Центрируем ссылку */
+}
+
+.columns-container {
+  display: flex;
+  justify-content: flex-start; /* Колонки по горизонтали */
+  gap: 20px; /* Расстояние между колонками */
+  width: 100%; /* Задаем ширину контейнера колонок */
+  overflow-x: auto; /* Если колонок больше, чем помещается на экране */
+}
+
+.column {
+  display: flex;
+  flex-direction: column; /* Элементы внутри колонок по вертикали */
+  width: 250px; /* Фиксированная ширина столбца */
+  flex-shrink: 0; /* Не позволяет столбцу сжиматься */
+}
+
+.task {
+  user-select: none;
+  padding: 16px;
+  margin: 0 0 8px 0;
+  background-color: #456c86;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.task button:hover {
+  background-color: #c82333;
+}
+
+.column .droppable-area {
+  padding: 10px;
+  min-height: 500px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.column .droppable-area.dragging-over {
+  background-color: #c8e0ff;
+}
