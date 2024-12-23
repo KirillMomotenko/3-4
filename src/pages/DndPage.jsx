@@ -1,14 +1,22 @@
-import { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import '../App.css';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import "../App.css";
+import { Link } from "react-router-dom";
 
 function DndPage() {
   const [columns, setColumns] = useState({
-    todo: { name: 'To Do', items: [{ id: '1', content: 'First task' }, { id: '2', content: 'Second task' }, { id: '3', content: 'Buy something' }, { id: '4', content: 'Do something' }] },
-    inProgress: { name: 'In Progress', items: [] },
-    done: { name: 'Done', items: [] },
-    blocked: { name: 'Blocked', items: [] },
+    todo: {
+      name: "To Do",
+      items: [
+        { id: "1", content: "First task" },
+        { id: "2", content: "Second task" },
+        { id: "3", content: "Buy something" },
+        { id: "4", content: "Do something" },
+      ],
+    },
+    inProgress: { name: "In Progress", items: [] },
+    done: { name: "Done", items: [] },
+    blocked: { name: "Blocked", items: [] },
   });
 
   const onDragEnd = (result) => {
@@ -23,26 +31,34 @@ function DndPage() {
 
     if (sourceColumn === destColumn) {
       sourceItems.splice(destination.index, 0, removed);
-      setColumns({ ...columns, [source.droppableId]: { ...sourceColumn, items: sourceItems } });
+      setColumns({
+        ...columns,
+        [source.droppableId]: { ...sourceColumn, items: sourceItems },
+      });
     } else {
       destItems.splice(destination.index, 0, removed);
       setColumns({
         ...columns,
         [source.droppableId]: { ...sourceColumn, items: sourceItems },
-        [destination.droppableId]: { ...destColumn, items: destItems }
+        [destination.droppableId]: { ...destColumn, items: destItems },
       });
     }
   };
 
   const deleteTask = (columnId, itemId) => {
-    const newItems = columns[columnId].items.filter(item => item.id !== itemId);
-    setColumns({ ...columns, [columnId]: { ...columns[columnId], items: newItems } });
+    const newItems = columns[columnId].items.filter(
+      (item) => item.id !== itemId
+    );
+    setColumns({
+      ...columns,
+      [columnId]: { ...columns[columnId], items: newItems },
+    });
   };
 
   return (
     <div className="dnd-container">
       <div className="link-container">
-        <Link to="/" style={{ textDecoration: 'none', color: 'blue' }}>
+        <Link to="/Lab3-4/" style={{ textDecoration: "none", color: "blue" }}>
           Вернуться на главную страницу
         </Link>
       </div>
@@ -57,10 +73,16 @@ function DndPage() {
                   <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    className={`droppable-area ${snapshot.isDraggingOver ? 'dragging-over' : ''}`}
+                    className={`droppable-area ${
+                      snapshot.isDraggingOver ? "dragging-over" : ""
+                    }`}
                   >
                     {column.items.map((item, index) => (
-                      <Draggable key={item.id} draggableId={item.id} index={index}>
+                      <Draggable
+                        key={item.id}
+                        draggableId={item.id}
+                        index={index}
+                      >
                         {(provided, snapshot) => (
                           <div
                             ref={provided.innerRef}
@@ -68,12 +90,18 @@ function DndPage() {
                             {...provided.dragHandleProps}
                             className="task"
                             style={{
-                              backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
+                              backgroundColor: snapshot.isDragging
+                                ? "#263B4A"
+                                : "#456C86",
                               ...provided.draggableProps.style,
                             }}
                           >
                             {item.content}
-                            <button onClick={() => deleteTask(columnId, item.id)}>Удалить</button>
+                            <button
+                              onClick={() => deleteTask(columnId, item.id)}
+                            >
+                              Удалить
+                            </button>
                           </div>
                         )}
                       </Draggable>
